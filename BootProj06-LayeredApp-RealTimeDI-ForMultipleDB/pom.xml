@@ -38,20 +38,20 @@
 			</exclusions>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
-<!-- 	<dependency>
+ 	<dependency>
 		    <groupId>org.apache.tomcat</groupId>
 		    <artifactId>tomcat-jdbc</artifactId>
-		</dependency> -->
+		</dependency>
 	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
-	<!-- 	<dependency>
+		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-dbcp2</artifactId>
-		</dependency> -->
+		</dependency> 
 	<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ucp -->
-	<!-- 	<dependency>
+		<dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>
 		    <artifactId>ucp</artifactId>
-		</dependency> -->
+		</dependency>
 	<!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
 		<dependency>
 		    <groupId>com.mchange</groupId>
