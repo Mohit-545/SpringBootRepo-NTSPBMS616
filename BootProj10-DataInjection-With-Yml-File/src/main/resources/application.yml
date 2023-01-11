@@ -1,0 +1,8 @@
+# Customer information in yml file
+ 
+ cust:
+    info:
+       custNo: 101
+       custName: Abhik
+       custAddrs: Chennai
+       billAmt: 9000.50
