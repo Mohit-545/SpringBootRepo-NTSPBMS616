@@ -1,0 +1,35 @@
+# Simple type properties Data Injection
+emp:
+   info:
+      eNo: 102
+      eName: Suresh
+# Array type properties Data Injection       
+      favColors:
+         - purple
+         - green
+         - red
+# List type properties Data Injection       
+      nickNames:
+         - surya
+         - sush
+         - suri
+         #OR
+      nick-Name: [sur,sresh,resh]
+# Set type properties Data Injection 
+      phoneNos:
+         - 999999999
+         - 888888888
+         - 777777777
+# Map type properties Data Injection  
+      idDetails:
+         adhaarNo: 8978 5487 5986
+         panNo: FBG3452DL5
+# HAS-A type properties Data Injection
+      company:
+         cId: 5658
+         cName: HCL TECHNOLOGIES
+         cAddrs: Pune
+         cSize: 650
+         
+            
+         
