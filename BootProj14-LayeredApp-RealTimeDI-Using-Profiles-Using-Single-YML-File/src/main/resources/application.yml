@@ -1,0 +1,89 @@
+#Activate the profile to work with 
+spring:
+   profiles:
+      active: prod 
+
+---
+
+spring:
+   config:
+      activate:
+         on-profile: dev
+
+#JDBC Properties
+#For MySQL DB (fixed keys)   
+   datasource: 
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///NTSPBMS616DB
+      username: root
+      password: root
+      dbcp2: 
+         initial-size: 10
+         max-total: 100
+         max-conn-lifetime-millis: 100000
+
+#Specify the dataSource type
+      type: org.apache.commons.dbcp2.BasicDataSource      
+      
+---
+
+spring:
+   config:
+      activate:
+         on-profile: prod
+   
+#JDBC Properties
+#For Oracle DB (fixed keys)
+   datasource: 
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@localhost:1521:orcl
+      username: mohitdb
+      password: mohitdb
+      hikari:
+         minimum-idle: 10
+         maximum-pool-size: 100
+         keepalive-times: 100000
+   
+---
+
+spring:
+   config:
+      activate:
+         on-profile: test
+
+#JDBC Properties
+#For MySQL DB (fixed keys)
+   datasource: 
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///NTSPBMS616DB
+      username: root
+      password: root
+#Specify dataSource type
+      type: com.mchange.v2.c3p0.ComboPooledDataSource
+# User-Defined Keys
+c3p0: 
+   minSize: 10
+   maxSize: 1000
+
+---
+
+spring:
+   config:
+      activate:
+         on-profile: uat
+   
+#JDBC Properties
+#For Oracle DB (fixed keys)
+   datasource: 
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@localhost:1521:orcl
+      username: mohitdb
+      password: mohitdb
+      oracleucp: 
+         min-pool-size: 10
+         max-pool-size: 100
+         time-to-live-connection-timeout: 100000
+
+#Specify the dataSource type
+      type: oracle.ucp.jdbc.PoolDataSourceImpl        
+          
