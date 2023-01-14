@@ -1,0 +1,15 @@
+#JDBC Properties
+#For MySQL DB (fixed keys)
+spring: 
+   datasource: 
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///NTSPBMS616DB
+      username: root
+      password: root
+#Specify dataSource type
+      type: com.mchange.v2.c3p0.ComboPooledDataSource
+# User-Defined Keys
+c3p0: 
+   minSize: 10
+   maxSize: 1000
+

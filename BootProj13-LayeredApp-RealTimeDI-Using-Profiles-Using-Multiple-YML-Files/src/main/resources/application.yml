@@ -1,0 +1,4 @@
+#Activate the profile to work with 
+spring:
+   profiles: 
+      active: prod
