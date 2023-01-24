@@ -7,4 +7,4 @@ import com.nt.entity.Doctor;
 
 public interface IDoctorRepo extends CrudRepository<Doctor, Integer> {
 
-}
+}//interface
