@@ -39,4 +39,28 @@ public class DoctorMgmtServiceImpl implements IDoctorService {
 		
 	}//method
 
+	@Override
+	public long fetchCount() {
+		
+		return docRepo.count();
+	}
+
+	@Override
+	public boolean checkDoctoryAvailability(Integer id) {
+		
+		return docRepo.existsById(id);
+	}
+
+	@Override
+	public Iterable<Doctor> showAllDoctors() {
+		
+		return docRepo.findAll();
+	}
+
+	@Override
+	public Iterable<Doctor> showAllDoctorsByIds(Iterable<Integer> ids) {
+		
+		return docRepo.findAllById(ids);
+	}
+
 }//class
