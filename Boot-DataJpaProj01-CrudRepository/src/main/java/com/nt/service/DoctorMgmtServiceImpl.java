@@ -3,6 +3,7 @@ package com.nt.service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,87 @@ public class DoctorMgmtServiceImpl implements IDoctorService {
 	public Iterable<Doctor> showAllDoctorsByIds(Iterable<Integer> ids) {
 		
 		return docRepo.findAllById(ids);
+	}
+
+	/*@Override	// 1st logic for showDoctorById(-)
+	public Doctor showDoctorById(Integer id) {
+		Optional<Doctor> opt = docRepo.findById(id);
+		if(opt.isPresent())
+			return opt.get();
+		else 
+			new IllegalArgumentException("Invalid Doctor id entered...!!!!!!");
+	}*/
+
+	
+	/*@Override	// 2nd logic for showDoctorById(-)   (Best Logic)
+	public Doctor showDoctorById(Integer id) {
+		Doctor doctor = docRepo.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid Doctor id...!!!!"));
+		return doctor;
+	}*/
+
+	
+	@Override	// 3rd logic for showDoctorById(-)   
+	public Doctor showDoctorById(Integer id) {
+		Doctor dutyDoctor = new Doctor();
+		dutyDoctor.setSpecialization("General Physician");
+		Doctor doc = docRepo.findById(id).orElse(dutyDoctor);
+		return doc;
+	}
+
+	@Override
+	public String updateDoctorIncomeById(Integer id, float hikePercentage) {
+		//load the doctor
+		Optional<Doctor> opt = docRepo.findById(id);
+		if(opt.isPresent()) {
+			Doctor doc = opt.get();
+			//hike the income with given percentage
+			double newIncome = doc.getIncome()+(doc.getIncome()*(hikePercentage/100.0f));
+			//set newIncome to the doc object
+			doc.setIncome(newIncome);
+			//partially save the entity object
+			return docRepo.save(doc).getDocId()+" is updated with new income = "+newIncome;
+		}//if
+		else {
+			return "Doctor not found with given id = "+id;
+		}//else
+	}
+
+	@Override
+	public String registerOrUpdateDoctor(Doctor doctor) {
+		//load the entity object
+		Optional<Doctor> opt = docRepo.findById(doctor.getDocId());
+		if(opt.isPresent()) {
+			docRepo.save(doctor);	//for only updating existing doctor
+			return doctor.getDocId()+" Doctor is found and updated";
+		}//if
+		else {
+			return "Doctor is registered with Id :: "+docRepo.save(doctor).getDocId();
+		}//else
+	}
+
+	@Override
+	public String deleteDoctorById(Integer id) {
+		//load the obj
+		Optional<Doctor> opt = docRepo.findById(id);
+		if(opt.isPresent()) {
+			docRepo.deleteById(id);
+			return "Doctor with "+id+" is deleted";
+		}//if
+		else{
+			return "Doctor with given "+id+" not found....!!!!";
+		}//else
+	}
+
+	@Override
+	public String deleteDoctor(Doctor doctor) {
+		Optional<Doctor> opt = docRepo.findById(doctor.getDocId());
+		if(opt.isEmpty()) {
+			return "Doctor with given doctor id "+doctor.getDocId()+" not found";
+		}//if
+		else {
+			 docRepo.delete(opt.get());
+			 return "Doctor with id "+doctor.getDocId()+" is found and deleted";
+		}//else
 	}
 
 }//class

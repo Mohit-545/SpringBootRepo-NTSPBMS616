@@ -53,17 +53,49 @@ public class BootDataJpaProj01CrudRepositoryApplication {
 		
 		/*try {
 			System.out.println("is id(101) exsists or not ? :: "+service.checkDoctoryAvailability(101));
-		}*/
+		}//try*/
 		
 		
 		/*try {
 			Iterable<Doctor> it = service.showAllDoctors();
 			it.forEach(System.out::println);
+		}//try*/
+		
+		
+		/*try {
+			service.showAllDoctorsByIds(List.of(1, 2, 102, 103)).forEach(System.out::println);
+		}//try*/
+		
+		
+		/*try {
+			Doctor doc = service.showDoctorById(1011);
+			System.out.println(doc);
+		}//try*/
+		
+		
+		/*try {
+			System.out.println("101 doctor info before new income :: "+service.showDoctorById(101));
+			System.out.println(service.updateDoctorIncomeById(101, 20.0f));
+			System.out.println("101 doctor info after new income :: "+service.showDoctorById(101));
+		}*/
+		
+		
+		/*try {
+			Doctor doc = new Doctor();
+			doc.setDocId(103); doc.setDocName("Prayag Kumar"); doc.setSpecialization("Anesthesia"); doc.setIncome(190000.0);
+			System.out.println(service.registerOrUpdateDoctor(doc));
+		}*/
+		
+		
+		/*try {
+			System.out.println(service.deleteDoctorById(120));
 		}*/
 		
 		
 		try {
-			service.showAllDoctorsByIds(List.of(1, 2, 102, 103)).forEach(System.out::println);
+			Doctor doc = new Doctor();
+			doc.setDocId(102); doc.setDocName("Navin Pillai");
+			System.out.println(service.deleteDoctor(doc));
 		}
 		catch (Exception e) {
 			e.printStackTrace();

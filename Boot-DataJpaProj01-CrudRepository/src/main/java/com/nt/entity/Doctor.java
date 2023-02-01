@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Entity
@@ -20,10 +21,14 @@ public class Doctor {
 	@SequenceGenerator(name = "gen1", sequenceName = "DOCID_SEQ", initialValue = 100, allocationSize = 1)
 	@GeneratedValue(generator = "gen1", strategy = GenerationType.SEQUENCE)
 	private Integer docId;
+	
 	@Column(name = "DOC_NAME", length = 25)
 	private String docName;
+	
 	@Column(name = "SPECIALIZATION", length = 20)
 	private String specialization;
+	
+	//@Transient   //used for making this particular column not participating in any persistance operation
 	@Column(name = "INCOME")
 	private Double income;
 
