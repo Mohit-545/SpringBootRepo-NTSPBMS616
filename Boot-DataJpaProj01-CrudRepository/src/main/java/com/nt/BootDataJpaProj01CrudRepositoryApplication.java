@@ -92,10 +92,20 @@ public class BootDataJpaProj01CrudRepositoryApplication {
 		}*/
 		
 		
-		try {
+		/*try {
 			Doctor doc = new Doctor();
 			doc.setDocId(102); doc.setDocName("Navin Pillai");
 			System.out.println(service.deleteDoctor(doc));
+		}*/
+		
+		
+		/*try {
+			System.out.println(service.removeAllDoctors());
+		}*/
+	
+		
+		try {
+			System.out.println(service.removeDoctorsByIds(List.of(52,101)));
 		}
 		catch (Exception e) {
 			e.printStackTrace();

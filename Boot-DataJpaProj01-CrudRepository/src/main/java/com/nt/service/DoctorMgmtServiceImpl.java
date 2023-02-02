@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.print.Doc;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -144,5 +146,32 @@ public class DoctorMgmtServiceImpl implements IDoctorService {
 			 return "Doctor with id "+doctor.getDocId()+" is found and deleted";
 		}//else
 	}
+
+	@Override
+	public String removeAllDoctors() {
+		long count = docRepo.count();
+		if(count>0) {
+			return count+" no. of doctors are deleted";
+		}//if
+		else {
+			return "no doctor's records are found...!!!!!";
+		}//else
+		
+	}
+
+	@Override
+	public String removeDoctorsByIds(List<Integer> ids) {
+		List<Doctor> doctorList = (List<Doctor>) docRepo.findAllById(ids);
+		if(doctorList.size()==ids.size()) {
+			docRepo.deleteAllById(ids);
+			return doctorList.size()+" no. of doctors are deleted";
+		}//if
+		else {
+			return "some of the ids record are not found...!!!!!";
+		}//else
+		
+	}
+
+
 
 }//class

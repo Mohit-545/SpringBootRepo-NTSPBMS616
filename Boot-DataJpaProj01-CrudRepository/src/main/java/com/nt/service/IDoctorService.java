@@ -2,6 +2,8 @@
 package com.nt.service;
 
 
+import java.util.List;
+
 import com.nt.entity.Doctor;
 
 public interface IDoctorService {
@@ -28,5 +30,9 @@ public interface IDoctorService {
 	public String deleteDoctorById(Integer id);
 	
 	public String deleteDoctor(Doctor doctor);
+	
+	public String removeAllDoctors();
+	
+	public String removeDoctorsByIds(List<Integer> ids);
 	
 }//interface
