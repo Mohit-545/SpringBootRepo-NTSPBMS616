@@ -45,8 +45,23 @@ public class DoctorMgmtServiceImpl implements IDoctorMgmtService {
 		return page;
 	}//method
 
-
-
-
+	@Override
+	public void showDataThroughPagination(int pageSize) {
+		//decide the no. of pages
+		long count = docRepo.count();
+		long pagesCount = count/pageSize;
+		pagesCount = count%pageSize==0?pagesCount:pageSize++;
+		
+		for(int i=0; i<pagesCount; i++) {
+			//create Pageable obj
+			Pageable pageable = PageRequest.of(i, pageSize);
+			//create each Page record
+			Page<Doctor> page = docRepo.findAll(pageable);
+			System.out.println("Record of Page:"+(page.getNumber()+1)+" of "+page.getTotalPages());
+			page.getContent().forEach(System.out::println);
+			System.out.println("==================================================================");
+		}//for
+		
+	}//method
 
 }//class

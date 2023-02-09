@@ -25,7 +25,7 @@ public class PandSRepoTestRunner implements CommandLineRunner {
 		service.showDoctorsBySorting(false, "income", "docName").forEach(System.out::println);;
 		System.out.println();*/
 		
-		service.showDoctorsInfoByPageNo(1, 3, true, "docName").forEach(System.out::println);
+		/*service.showDoctorsInfoByPageNo(1, 3, true, "docName").forEach(System.out::println);
 		System.out.println();
 		Page<Doctor> page = service.showDoctorsInfoByPageNo(0, 5, false, "income");
 		System.out.println("Page Number :: "+page.getNumber());
@@ -40,8 +40,10 @@ public class PandSRepoTestRunner implements CommandLineRunner {
 		}//if
 		else {
 			System.out.println("Page Not Found !!!!!");
-		}
-		System.out.println();
-	}
+		}//else
+		System.out.println();*/
+		
+		service.showDataThroughPagination(3);
+	}//run()
 
 }//class
