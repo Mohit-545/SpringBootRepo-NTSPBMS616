@@ -2,6 +2,8 @@
 package com.nt.runners;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
@@ -41,7 +43,9 @@ public class JpaRepoTestRunner implements CommandLineRunner {
 		System.out.println();
 		repo.findBydocNameLike("%ar%").forEach(System.out::println);
 		System.out.println();
-		
+		repo.findByIncomeGreaterThanEqualAndIncomeLessThanEqual(5000.0, 300000.0).forEach(System.out::println);
+		System.out.println();
+		repo.findBySpecializationInOrIncomeBetween(List.of("Ortho", "Cardio"), 150000.0, 15000000.0).forEach(System.out::println);
 	}//run()
 
 }//class

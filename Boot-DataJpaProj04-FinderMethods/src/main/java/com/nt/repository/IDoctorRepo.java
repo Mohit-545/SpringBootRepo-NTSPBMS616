@@ -21,6 +21,9 @@ public interface IDoctorRepo extends JpaRepository<Doctor, Integer> {
 	public Iterable<Doctor> findBydocNameEqualsIgnoreCase(String name);
 	
 	public Iterable<Doctor> findBydocNameLike(String chars);
+	
+	public Iterable<Doctor> findByIncomeGreaterThanEqualAndIncomeLessThanEqual(double startRange, double endRange);
+	public Iterable<Doctor> findBySpecializationInOrIncomeBetween(List<String> specialization, double start, double end);
  
 
 }//interface
