@@ -4,15 +4,22 @@ package com.nt.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.nt.entity.Doctor;
-import com.nt.view.IResultView1;
-import com.nt.view.IView;
 
 public interface IDoctorRepo extends JpaRepository<Doctor, Integer> {
 	
-	public Iterable<IResultView1> findBySpecializationIn(List<String> specialization);
-	
-	public <T extends IView> Iterable<T> findByIncomeBetween(double start, double end, Class<T> clazz);
+//@Query("FROM Doctor WHERE income>=?1 AND income<=?2")
+//@Query("FROM com.nt.entity.Doctor WHERE income>=?1 AND income<=?2")
+//@Query("FROM Doctor doc WHERE doc.income>=?1 AND doc.income<=?2")
+//@Query("Select doc FROM Doctor doc WHERE doc.income>=?1 AND doc.income<=?2")
+	/*@Query("FROM Doctor doc WHERE doc.income>=:start AND doc.income<=:end")
+	public List<Doctor> searchDoctorsByIncomeRange(@Param("start") double startRange, @Param("end") double endRange);*/
 
+	@Query("FROM Doctor doc WHERE doc.income>=:start AND doc.income<=:end")
+		public List<Doctor> searchDoctorsByIncomeRange(double start, double end);
+
+	
 }//interface
