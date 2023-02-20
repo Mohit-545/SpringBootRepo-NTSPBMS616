@@ -23,5 +23,23 @@ public class DoctorMgmtServiceImpl implements IDoctorMgmtService {
 		return docRepo.searchDoctorsByIncomeRange(startRange, endRange);
 	}//method
 
+	@Override
+	public List<Doctor> showDoctorsBySpecialization(String sp1, String sp2) {
+		List<Doctor> list = docRepo.searchDoctorsBySpecialization(sp1, sp2);
+		return list;
+	}//method
+
+	@Override
+	public List<Object[]> showDoctorsDataByIncome(double start, double end) {
+		List<Object[]> list = docRepo.searchDoctorsDataByIncomeRange(start, end);
+		return list;
+	}//method
+
+	@Override
+	public List<String> showDoctorsNameByIncomeRange(double min, double max) {
+		List<String> list = docRepo.searchAllDoctorsNameByIncomeRange(min, max);
+		return list;
+	}//method
+
 
 }//class
