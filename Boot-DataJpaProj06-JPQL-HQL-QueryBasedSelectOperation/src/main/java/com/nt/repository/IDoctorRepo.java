@@ -2,6 +2,7 @@
 package com.nt.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -32,6 +33,23 @@ public interface IDoctorRepo extends JpaRepository<Doctor, Integer> {
 	//--------------------------------Select Projection/Scalar Query for specific single col values
 	@Query("SELECT docName FROM Doctor WHERE income BETWEEN :min AND :max")
 	public List<String> searchAllDoctorsNameByIncomeRange(double min, double max);
-
 	
+	
+	//---------------------------------Entity Query giving Single record-----------------------------------
+	@Query("FROM Doctor WHERE docName=:name")
+	public Optional<Doctor> searchDoctorsInfoByName(String name);
+
+	//---------------------------------Scalar Query giving Single record with specific multiple col values-----------------------------------
+	@Query("SELECT docId,docName FROM Doctor WHERE docName=:name")
+	public Object searchDoctorsDataByName(String name);
+	
+	//---------------------------------Scalar Query giving Single record with specific single col values-----------------------------------
+	@Query("SELECT specialization FROM Doctor WHERE docName=:name")
+	public String searchDoctorSpecializationByName(String name);
+	
+	//-----------------------------Using Aggregate Functions with HQL/JPQL Queries------------------------------------------
+	@Query("SELECT COUNT(DISTINCT docName) FROM Doctor")
+	public int fetchDoctorByCount();
+	@Query("SELECT COUNT(*),MAX(income),MIN(income),AVG(income),SUM(income) FROM Doctor")
+	public Object fetchAggregateDataOfDoctor();
 }//interface

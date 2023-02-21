@@ -11,5 +11,9 @@ public interface IDoctorMgmtService {
 	public List<Doctor> showDoctorsBySpecialization(String sp1, String sp2);
 	public List<Object[]> showDoctorsDataByIncome(double start,double end);
 	public List<String> showDoctorsNameByIncomeRange(double min, double max);
-	
+	public Doctor showDoctorByName(String name);
+	public Object showDoctorDataByName(String name);
+	public String showDoctorSpecializationByDoctorName(String name);
+	public int showDoctorsNameCount();
+	public Object showDoctorsAggregateData();
 }//interface

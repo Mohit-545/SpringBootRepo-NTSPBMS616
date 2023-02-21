@@ -41,5 +41,35 @@ public class DoctorMgmtServiceImpl implements IDoctorMgmtService {
 		return list;
 	}//method
 
+	@Override
+	public Doctor showDoctorByName(String name) {
+		Doctor doc = docRepo.searchDoctorsInfoByName(name).orElseThrow(()-> new IllegalArgumentException("Doctor not found"));
+		return doc;
+	}//method
+
+	@Override 	
+	public Object showDoctorDataByName(String name) {
+		Object obj = docRepo.searchDoctorsDataByName(name);
+		return obj;
+	}//method
+
+	@Override
+	public String showDoctorSpecializationByDoctorName(String name) {
+		String result = docRepo.searchDoctorSpecializationByName(name);
+		return result;
+	}//method
+
+	@Override
+	public int showDoctorsNameCount() {
+		int count = docRepo.fetchDoctorByCount();
+		return count;
+	}//method
+
+	@Override
+	public Object showDoctorsAggregateData() {
+		Object obj = docRepo.fetchAggregateDataOfDoctor();
+		return obj;
+	}//method
+
 
 }//class
