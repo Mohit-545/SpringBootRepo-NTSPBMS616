@@ -71,5 +71,17 @@ public class DoctorMgmtServiceImpl implements IDoctorMgmtService {
 		return obj;
 	}//method
 
+	@Override
+	public int appraiseDoctorsIncomeBySpecialization(String sp, double hikePercentage) {
+		int count = docRepo.hikeDoctorsIncomeBySpecialization(sp, hikePercentage);
+		return count;
+	}//method
+
+	@Override
+	public int fireDoctorsByIncomeRange(double start, double end) {
+		
+		return docRepo.removeDoctorsByIncomeRange(start, end);
+	}//method
+
 
 }//class
