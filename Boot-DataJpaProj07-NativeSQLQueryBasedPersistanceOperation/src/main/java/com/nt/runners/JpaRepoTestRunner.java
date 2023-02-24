@@ -19,12 +19,12 @@ public class JpaRepoTestRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println(service.insertDoctor("Hemant Ojha", "Surgeon", 1985650.0));
+		//System.out.println(service.insertDoctor("Hemant Ojha", "Surgeon", 1985650.0));
 		System.out.println();
 		
 		System.out.println("Current System Date and Time :: "+service.showSysDate());
 		
-		System.out.println(service.createTempDBTable());
+		//System.out.println(service.createTempDBTable());
 		System.out.println();
 		
 	}//run(-)
