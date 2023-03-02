@@ -1,0 +1,11 @@
+						Sample Marriage biodata for coding practice
+=============================================================================================
+
+Name :: Akash Deep
+
+Age :: 24
+
+Occupation :: Business
+
+Contact No :: 9855698569
+
