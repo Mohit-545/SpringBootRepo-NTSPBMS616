@@ -2,6 +2,7 @@
 package com.nt.service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +76,56 @@ public class OtoMAssociatonServiceMgmtImpl implements IOtoMAssociationServiceMgm
  				});//child
 		});//parent
 
+	}//method
+
+	@Override
+	public String deleteByPersonId(int personId) {
+		Optional<Person> opt = personRepo.findById(personId);
+		if(opt.isPresent()) {
+			personRepo.delete(opt.get());
+			return "Person and his PhoneNumbers are deleted";
+		}//if
+		return "Person Details not found";
+	}//method
+
+	@Override
+	public String deleteAllPhoneNumbersOfAPerson(int personId) {
+		//Load parent object
+		Optional<Person> opt = personRepo.findById(personId);
+		if(opt.isPresent()) {
+			//loading all childs of the parent
+			Set<PhoneNumber> childs = opt.get().getContactDetails();
+			childs.forEach(ph->{
+				ph.setPersonInfo(null);
+			});
+			phRepo.deleteAll(childs);
+			return childs.size()+" PhoneNumbers of "+personId+" Person are deleted";
+		}//if
+		return "Person id not found";
+	}//method
+
+	@Override
+	public void addNewChildToAPersonById(int personId) {
+		//load parent object
+		Optional<Person> opt = personRepo.findById(personId);
+		if(opt.isPresent()) {
+			Person per = opt.get();
+			//load all childs of parent
+			Set<PhoneNumber> childs = per.getContactDetails();
+			//create new child object
+			PhoneNumber ph = new PhoneNumber(5554449856L, "VI", "Personal");
+			//link to parent object
+			ph.setPersonInfo(per);
+			//add to childs object
+			childs.add(ph);
+			//save child object
+			phRepo.save(ph);
+			System.out.println("New child is added to existing childs of parent");
+		}//if
+		else {
+			System.out.println(personId+" Person not found");
+		}//else
+		
 	}//method
 
 }//class

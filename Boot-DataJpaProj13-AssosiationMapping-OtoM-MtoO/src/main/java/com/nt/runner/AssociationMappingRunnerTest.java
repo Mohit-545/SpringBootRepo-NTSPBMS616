@@ -17,7 +17,10 @@ public class AssociationMappingRunnerTest implements CommandLineRunner {
 		// invoke the methods
 		//service.saveDataUsingParent();
 		//service.saveDataUsingChild();
-		service.loadDataUsingParent();
+		//service.loadDataUsingParent();
+		//System.out.println(service.deleteByPersonId(3));
+		//System.out.println(service.deleteAllPhoneNumbersOfAPerson(2));
+		service.addNewChildToAPersonById(2);
 		System.out.println();
 		
 		

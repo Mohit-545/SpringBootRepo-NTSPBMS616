@@ -36,7 +36,7 @@ public class PhoneNumber {
 	@NonNull
 	private String numberType;
 	
-	@ManyToOne(targetEntity = Person.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Person.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "PERSON_ID", referencedColumnName = "PID")
 	private Person personInfo;
 	
