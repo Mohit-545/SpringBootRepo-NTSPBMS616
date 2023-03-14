@@ -24,5 +24,17 @@ public class EmployeeMgmtServiceImpl implements IEmployeeMgmtService {
 		return "MongoDb doc is saved with id values :: "+empRepo.insert(e).getEno();
 	}//method
 
+	@Override
+	public List<Employee> searchBySalaryRange(double start, double end) {
+		
+		return empRepo.findBySalaryBetween(start, end);
+	}//method
+
+	@Override
+	public Employee searchByEmployeeName(String name) {
+		
+		return empRepo.findByEname(name);
+	}//method
+
 
 }//class

@@ -9,4 +9,7 @@ public interface IEmployeeMgmtService {
 	
 	public String saveEmployee(Employee e);
 	
+	public List<Employee> searchBySalaryRange(double start, double end);
+	public Employee searchByEmployeeName(String name);
+	
 }//interface
