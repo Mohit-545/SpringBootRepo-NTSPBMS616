@@ -20,7 +20,7 @@ public class MongoRepositoryTestRunner implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println();
 		/*Employee emp = new Employee();
-		emp.setEno(new Random().nextInt(10000)); emp.setEname("Ram"); emp.setEaddrs("Hyd"); emp.setSalary(800000.0);
+		emp.setEno(new Random().nextInt(10000)); emp.setEname("Masur"); emp.setEaddrs("Hyd"); emp.setSalary(5454856.0);
 		emp.setVaccinated(true);
 		System.out.println(service.saveEmployee(emp));*/
 		
