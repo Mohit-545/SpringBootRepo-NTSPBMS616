@@ -50,6 +50,31 @@ public class EmployeeMgmtServiceImpl implements IEmployeeMgmtService {
 		return empRepo.getAllEmpDataByEnameWithSpecificChars(chars);
 	}//method
 
+	@Override
+	public int showAllEmpsCountBySalaryRange(double start, double end) {
+		return empRepo.getEmpsCountBySalaryRange(start, end);
+	}//method
+
+	@Override
+	public List<Employee> showAllEmpsByEnameSorted() {
+		return empRepo.getAllEmpsByEnameSorted();
+	}//method
+
+	@Override
+	public int deleteEmpsWithNoVaccination() {
+		return empRepo.removeAllEmpsWithNoVaccinatino();
+	}//method
+
+	@Override
+	public String showEmpsWithoutAddress() {
+		boolean data = empRepo.getAllEmpsWithoutAddress();
+		if(data=true) {
+			return "Employees data without address are available";
+		}//if
+		else
+		return "No Employee data found without address" ;
+	}//method
+
 
 
 }//class

@@ -37,8 +37,32 @@ public class MongoRepositoryTestRunner implements CommandLineRunner {
 		System.out.println("=====(4)=====================================================================================================");
 		service.showAllEmpsDataForSpecificAddresses("Hyd", "Kolkata").forEach(System.out::println);
 		
-		System.out.println("=====(5)=====================================================================================================");
+		System.out.println("=====(5)===containing the character=====================================================================================");
 		service.showAllEmpsDataByEnameForSpecificChars("h").forEach(System.out::println);
+		
+		System.out.println("=====(6)===starting with this character=====================================================================================");
+		service.showAllEmpsDataByEnameForSpecificChars("^m").forEach(System.out::println);
+		
+		System.out.println("=====(7)===ending with this character=====================================================================================");
+		service.showAllEmpsDataByEnameForSpecificChars("h$").forEach(System.out::println);
+	
+		System.out.println("=====(8)===counting of all employees=====================================================================================");
+		System.out.println(service.showAllEmpsCountBySalaryRange(800000.0, 1000000.0));
+		
+		System.out.println("=====(9)===sorting of all employees=====================================================================================");
+		service.showAllEmpsByEnameSorted().forEach(System.out::println);
+		
+		System.out.println("=====(10)===deleting employees=====================================================================================");
+		System.out.println(service.deleteEmpsWithNoVaccination());
+		
+		System.out.println("=====(11)===exists operator used for employees=====================================================================================");
+		System.out.println(service.showEmpsWithoutAddress());
+		
+		
+		
+		
+		
+		
 		
 		
 		

@@ -15,6 +15,11 @@ public interface IEmployeeMgmtService {
 	public List<Employee> showAllEmpsDataForSpecificAddresses(String addrs1, String addrs2);
 	public List<Employee> showAllEmpsDataByEnameForSpecificChars(String chars);
 	
+	public int showAllEmpsCountBySalaryRange(double start, double end);
+	public List<Employee> showAllEmpsByEnameSorted();
+	public int deleteEmpsWithNoVaccination();
+	public String showEmpsWithoutAddress();
+	
 	
 	
 }//interface
