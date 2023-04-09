@@ -10,13 +10,7 @@
 		<br><br>
 		
 		<h2 style="color:purple; text-align:center"><a href = "season"><b>SHOW CURRENT SEASON</b></a></h2>
-		<br><br>
 		
-		<h2><a href="report">get report</a></h2><br><br>
-		
-		<form action="report" method="POST">
-			<input type="submit" value="GET REPORT">
-		</form>
 		
 </body>
 </html>

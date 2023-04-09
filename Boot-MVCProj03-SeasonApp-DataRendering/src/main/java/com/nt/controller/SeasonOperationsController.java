@@ -31,10 +31,5 @@ public class SeasonOperationsController {
 		return "display";
 	}//method
 	
-	@GetMapping("/report")
-	public String showAllReport() {
-		System.out.println("SeasonOperationsController.showAllReport()");
-		return "forward:demo-operations/all";
-	}//method
 	
 }//class
