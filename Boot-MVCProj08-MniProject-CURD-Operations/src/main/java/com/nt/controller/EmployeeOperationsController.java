@@ -4,12 +4,14 @@ package com.nt.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nt.entity.Employee;
@@ -47,6 +49,36 @@ public class EmployeeOperationsController {
 		//use service to register emp data
 		String msg = empService.registerEmployee(emp);
 		//add the results to flash attributes
+		attrs.addFlashAttribute("resultMsg", msg);
+		//return LVN
+		return "redirect:emp_report";
+	}//method
+	
+	@GetMapping("/emp_edit")
+	public String showEmployeeUpdateFormPage(@RequestParam("no") int eno, @ModelAttribute("emp") Employee emp) {
+		//use Service and get emp data by id
+		Employee emp1 = empService.getEmployeeById(eno);
+		//copy data source to dest emp object
+		BeanUtils.copyProperties(emp1, emp);
+		//return LVN
+		return "update_emp";
+	}//method
+	
+	@PostMapping("/emp_edit")
+	public String updateEmployeeData(@ModelAttribute("emp") Employee emp, RedirectAttributes attrs) {
+		//use Service to send new emp data to DB
+		String msg = empService.updateEmployee(emp);
+		// add result to flash attributes
+		attrs.addFlashAttribute("resultMsg", msg);
+		//return LVN
+		return "redirect:emp_report";
+	}//method
+	
+	@GetMapping("emp_delete")
+	public String deleteEmployee(@RequestParam int no, RedirectAttributes attrs) {
+		//use Service
+		String msg = empService.deleteEmployeeById(no);
+		//add result to flash attributes
 		attrs.addFlashAttribute("resultMsg", msg);
 		//return LVN
 		return "redirect:emp_report";

@@ -13,7 +13,7 @@
 					<td>${emp.job}</td>
 					<td>${emp.sal}</td>
 					<td><a href="emp_edit?no=${emp.empno}"><img src="images/edit.jpg" width="30" height="30"></a></td>
-					<td><a href="emp_delete?no=${emp.empno}"><img src="images/delete.png" width="30" height="30"></a></td>
+					<td><a href="emp_delete?no=${emp.empno}" onclick="return confirm('Are you sure to delete the records?')"><img src="images/delete.png" width="30" height="30"></a></td>
 				</tr>
 			</c:forEach>
 		</table>	
