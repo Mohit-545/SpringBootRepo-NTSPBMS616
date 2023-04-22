@@ -62,6 +62,15 @@ public class EmployeeMgmtServiceImpl implements IEmployeeMgmtService {
 				
 		return deptnoList;
 	}//method
+
+	@Override
+	public boolean isDesgInRejectedList(String desg) {
+		if(desg.equalsIgnoreCase("TeamLeader")) {
+			return true;
+		}//if
+		else
+		return false;
+	}//method
 	
 	
 

@@ -36,13 +36,14 @@ public class EmployeeValidator implements Validator {
 			errors.rejectValue("job", "emp.job.length");
 		}//else if
 
-		if(emp.getSal()==null) {
-			errors.rejectValue("sal", "emp.salary.required");
+		if(!errors.hasFieldErrors("sal")) {
+				if(emp.getSal()==null) {
+					errors.rejectValue("sal", "emp.salary.required");
+				}//if
+				else if(emp.getSal()<10000 || emp.getSal()>200000) {
+					errors.rejectValue("sal", "emp.salary.range");
+				}//else if
 		}//if
-		else if(emp.getSal()<10000 || emp.getSal()>200000) {
-			errors.rejectValue("sal", "emp.salary.range");
-		}//else if
-		
 		if(emp.getDeptno()==null) {
 			errors.rejectValue("deptno", "emp.deptno.required");
 		}//if

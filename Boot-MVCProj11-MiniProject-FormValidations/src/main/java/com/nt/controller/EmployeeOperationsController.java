@@ -54,8 +54,13 @@ public class EmployeeOperationsController {
 		//use validator
 		if(validator.supports(Employee.class)) {
 			validator.validate(emp, errors);
-			
-				if(errors.hasErrors()) {
+					
+					//application specific validation logic
+					if(empService.isDesgInRejectedList(emp.getJob())) {
+						errors.rejectValue("job", "emp.desg.reject");
+					}//if
+				
+					if(errors.hasErrors()) {
 					return "register_emp";
 				}//if
 		}//if
@@ -84,7 +89,11 @@ public class EmployeeOperationsController {
 		//use validator
 				if(validator.supports(Employee.class)) {
 					validator.validate(emp, errors);
-					
+						//application specific validation logic
+						if(empService.isDesgInRejectedList(emp.getJob())) {
+							errors.rejectValue("job", "emp.desg.reject");
+						}//if
+						
 						if(errors.hasErrors()) {
 							return "update_emp";
 						}//if
