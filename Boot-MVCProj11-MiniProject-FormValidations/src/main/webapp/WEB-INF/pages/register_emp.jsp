@@ -1,7 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="frm"%>
 
 <link rel = "styleshee" type="text/css" href = css/style.css>
-<script type="text/javascript" src="js/validation.js">
+<script language="Javascript" src="js/validation.js">
 </script>
 
 <h1 style="color: purple; text-align: center"><b><u>REGISTER NEW EMPLOYEE</u></b></h1><br><br>
@@ -32,6 +32,7 @@
 			<td><b><input type="reset" value="Reset"></b></td>
 		</tr>
 	</table>
+<frm:hidden path="vflag"/>
 </frm:form>
 <br> <br>
 <center>

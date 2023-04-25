@@ -51,18 +51,20 @@ public class EmployeeOperationsController {
 	@PostMapping("/emp_add")
 	public String registerEmployeeData(@ModelAttribute("emp") Employee emp, RedirectAttributes attrs,
 																																BindingResult errors) {
-		//use validator
-		if(validator.supports(Employee.class)) {
-			validator.validate(emp, errors);
+		if(emp.getVflag().equalsIgnoreCase("no")) {
+			//use validator
+			if(validator.supports(Employee.class)) {
+				validator.validate(emp, errors);
+						
+						//application specific validation logic
+						if(empService.isDesgInRejectedList(emp.getJob())) {
+							errors.rejectValue("job", "emp.desg.reject");
+						}//if
 					
-					//application specific validation logic
-					if(empService.isDesgInRejectedList(emp.getJob())) {
-						errors.rejectValue("job", "emp.desg.reject");
+						if(errors.hasErrors()) {
+						return "register_emp";
 					}//if
-				
-					if(errors.hasErrors()) {
-					return "register_emp";
-				}//if
+			}//if
 		}//if
 		
 		//use service to register emp data
@@ -86,7 +88,8 @@ public class EmployeeOperationsController {
 	@PostMapping("/emp_edit")
 	public String updateEmployeeData(@ModelAttribute("emp") Employee emp, RedirectAttributes attrs,
 																																	BindingResult errors) {
-		//use validator
+		if(emp.getVflag().equalsIgnoreCase("no")) {
+				//use validator
 				if(validator.supports(Employee.class)) {
 					validator.validate(emp, errors);
 						//application specific validation logic
@@ -98,6 +101,7 @@ public class EmployeeOperationsController {
 							return "update_emp";
 						}//if
 				}//if
+		}//if
 		//use Service to send new emp data to DB
 		String msg = empService.updateEmployee(emp);
 		// add result to flash attributes

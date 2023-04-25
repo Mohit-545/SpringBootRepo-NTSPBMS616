@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
@@ -26,5 +27,7 @@ public class Employee {
 	private Float sal;
 	@Column
 	private String deptno;
+	@Transient
+	private String vflag="no";
 
 }//class

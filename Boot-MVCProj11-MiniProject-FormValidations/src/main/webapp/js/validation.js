@@ -1,16 +1,16 @@
 
 function doValidation(frm) {
-	
-	//empty the error messages after every request processing
-	document.getElementById("ename.Err").innerHTML = "";
-	document.getElementById("job.Err").innerHTML = "";
-	document.getElementById("sal.Err").innerHTML = "";
-	document.getElementById("deptno.Err").innerHTML = "";
+		
+	//empty the old error messages after every request processing
+	document.getElementById("enameErr").innerHTML = "";
+	document.getElementById("jobErr").innerHTML = "";
+	document.getElementById("salErr").innerHTML = "";
+	document.getElementById("deptnoErr").innerHTML = "";
 	
 	//declare variable and read from data
 	let name = frm.ename.value;
 	let job = frm.job.value;
-	let sal = frm.sal.value;
+	let salary = frm.sal.value;
 	let deptno = frm.deptno.value;
 	
 	let isValid = true;
@@ -19,35 +19,46 @@ function doValidation(frm) {
 	// for name prop
 	if(name=="") {	//required rule
 		document.getElementById("enameErr").innerHTML = "Employee name is required***";
+		isValid = false;
 	} //if
 	else if(name.length<5 || name.length>15){ 	//length rule
-		document.getElementById("ename.Err").innerHTML = "Employee name mush contain >5 and <15 characters***"
+		document.getElementById("ename.Err").innerHTML = "Employee name mush contain >5 and <15 characters***";
+		isValid = false;
 	}//esle if
 	
 	// for job prop
 	if(job=="") {	//required rule
 		document.getElementById("jobErr").innerHTML = "Employee Designation is required***";
+		isValid = false;
 	} //if
 	else if(job.length<5 || job.length>15){ 	//length rule
-		document.getElementById("job.Err").innerHTML = "Employee Designation mush contain >5 and <15 characters***"
+		document.getElementById("job.Err").innerHTML = "Employee Designation mush contain >5 and <15 characters***";
+		isValid = false;
 	}//esle if
 
 	// for sal prop
-	if(sal=="") {	//required rule
+	if(salary=="") {	//required rule
 		document.getElementById("salErr").innerHTML = "Employee Salary is required***";
+		isValid = false;
 	} //if
-	else if(sal<10000 || sal>200000){ 	//range rule
-		document.getElementById("sal.Err").innerHTML = "Employee Salary mush be between 10000 to 200000***"
+	else if(salary<10000 || salary>200000){ 	//range rule
+		document.getElementById("salErr").innerHTML = "Employee Salary mush be between 10000 to 200000***";
+		isValid = false;
 	}//esle if
-	else if(isNaN(sal)){ 	//numeric value rule
-		document.getElementById("sal.Err").innerHTML = "Employee Salary mush be only Numeric Value***"
+	else if(isNaN(salary)){ 	//numeric value rule
+		document.getElementById("salErr").innerHTML = "Employee Salary mush be only Numeric Value***";
+		isValid = false;
 	}//esle if
 	
 	// for deptno prop
 	if(deptno=="") {	//required rule
 		document.getElementById("jobErr").innerHTML = "Employee Department is required***";
+		isValid = false;
 	} //if
 	
+	alert("Client side validations performed");
+	//for confirming that client side validations are performed and server side validations are not required 
+	frm.vflag.value = "yes";
 	return isValid;
 
 }//function
