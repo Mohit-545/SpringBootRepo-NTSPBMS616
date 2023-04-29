@@ -1,6 +1,9 @@
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!-- <link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" /> -->
+
 <c:choose>
 	<c:when test="${!empty resultList}">
 		<h1 style="color: purple; text-align: center"><b><u>All EMPLOYEE DATA</u></b></h1>

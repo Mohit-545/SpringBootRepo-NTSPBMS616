@@ -1,6 +1,11 @@
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!-- <link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" /> -->
+			
+<div class="container">			
+
 <c:choose>
 	<c:when test="${!empty empData.getContent()}">
 		<h1 style="color: purple; text-align: center"><b><u>All EMPLOYEE DATA</u></b></h1>
@@ -51,3 +56,4 @@
 	<a href="emp_add"><img src="images/add.png" width="120" height="120"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="./"><img src="images/home.webp" width="120" height="120"></a>
 </center>
+</div>
