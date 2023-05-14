@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">  
+<tiles-definitions>  
+    <definition name="baseDef" template="/WEB-INF/pages/layout.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="/WEB-INF/pages/header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/pages/menu.jsp" />  
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />  
+        <put-attribute name="adv" value="/WEB-INF/pages/adv.jsp" />  
+    </definition>  
+    <definition name="homePageDef" extends="baseDef">  
+        <put-attribute name="title" value="HK SOFTWARE TRAINING INSTITUTE" />  
+        <put-attribute name="body" value="/WEB-INF/pages/welcome.jsp" />  
+    </definition>  
+  
+    <definition name="facultiesPageDef" extends="baseDef">  
+        <put-attribute name="title" value="FACULTY NAMES" />  
+        <put-attribute name="body" value="/WEB-INF/pages/faculty.jsp" />  
+    </definition>  
+  
+    <definition name="coursesPageDef" extends="baseDef">  
+        <put-attribute name="title" value="COURSES OFFERED (CUTTING EDGE TECHNOLOGIES)" />  
+        <put-attribute name="body" value="/WEB-INF/pages/courses.jsp" />  
+    </definition>  
+  
+    <definition name="tmPageDef" extends="baseDef">  
+        <put-attribute name="title" value="TRAINING MODE TYPES" />  
+        <put-attribute name="body" value="/WEB-INF/pages/training_modes.jsp" />  
+    </definition>  
+  
+</tiles-definitions>  
